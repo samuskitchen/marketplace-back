@@ -1,0 +1,5 @@
+<changeFiles>
+    <file path="v1_1__initial_category.js"/>
+    <file path="v1_2__initial_product.js"/>
+    <file path="v1_3__initial_cart.js"/>
+</changeFiles>
