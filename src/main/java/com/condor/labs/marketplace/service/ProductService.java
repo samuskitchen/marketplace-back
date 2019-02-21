@@ -9,30 +9,28 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductService {
 
     @Autowired
     private ProductRepository productRepository;
 
-    public Page<Product> getAllByScore(Integer page, Integer size) {
+    public List<Product> getAllByScore() {
         Sort sort = new Sort(Sort.Direction.DESC, "score");
-        Pageable pageable = PageRequest.of(page, size, sort);
-        return productRepository.findAll(pageable);
+        return productRepository.findAll(sort);
     }
 
-    public Page<Product> getProductByName(String name, Integer page, Integer size) {
-        Pageable pageable = PageRequest.of(page, size);
-        return productRepository.getProductByName(name, pageable);
+    public List<Product> getProductByName(String name) {
+        return productRepository.getProductByName(name);
     }
 
-    public Page<Product> getProductByNameAndCategory(String name, Integer category, Integer page, Integer size) {
-        Pageable pageable = PageRequest.of(page, size);
-        return productRepository.getProductByNameAndCategory(name, category, pageable);
+    public List<Product> getProductByNameAndCategory(String name, Integer category) {
+        return productRepository.getProductByNameAndCategory(name, category);
     }
 
-    public Page<Product> getProductByCategory(Integer category, Integer page, Integer size) {
-        Pageable pageable = PageRequest.of(page, size);
-        return productRepository.getProductByCategory(category, pageable);
+    public List<Product> getProductByCategory(Integer category) {
+        return productRepository.getProductByCategory(category);
     }
 }

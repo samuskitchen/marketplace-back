@@ -2,11 +2,11 @@ package com.condor.labs.marketplace.repository;
 
 import com.condor.labs.marketplace.model.Product;
 import org.bson.types.ObjectId;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface ProductRepository extends MongoRepository<Product, String> {
@@ -14,11 +14,11 @@ public interface ProductRepository extends MongoRepository<Product, String> {
     Product findBy_id(ObjectId _id);
 
     @Query("{name: {$regex : '?0', $options: 'im'}}")
-    Page<Product> getProductByName(String name, Pageable pageable);
+    List<Product> getProductByName(String name);
 
     @Query("{name: {$regex : '?0', $options: 'im'}, category: ?1}")
-    Page<Product> getProductByNameAndCategory(String name, Integer category, Pageable pageable);
+    List<Product> getProductByNameAndCategory(String name, Integer category);
 
     @Query("{category: ?0}")
-    Page<Product> getProductByCategory(Integer category, Pageable pageable);
+    List<Product> getProductByCategory(Integer category);
 }
