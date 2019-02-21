@@ -29,22 +29,16 @@ public class CartService {
 
     public Cart saveCart(List<ProductQuantity> products) {
 
-        BigDecimal totalMount = BigDecimal.valueOf(0);
-        Integer totalQuantity = 0;
+        final BigDecimal[] totalMount = {BigDecimal.valueOf(0)};
+        final Integer[] totalQuantity = {0};
 
-        for (ProductQuantity productQuantity : products) {
-            Optional<Product> product = productRepository.findById(productQuantity.getId());
-
-            if (product.isPresent()) {
-                totalMount.add(product.get().getPrice());
-                totalQuantity += product.get().getQuantity();
-            }
-        }
+        //We obtain the values of the total shopping cart value and total product
+        getValuesCart(products, totalMount, totalQuantity);
 
         Cart cart = new Cart();
         cart.setProducts(products);
-        cart.setQuantity(totalQuantity);
-        cart.setTotalMount(new Decimal128(totalMount));
+        cart.setQuantity(totalQuantity[0]);
+        cart.setTotalMount(new Decimal128(totalMount[0]));
         cart.setDateCart(LocalDateTime.now());
         return cartRepository.save(cart);
     }
@@ -56,7 +50,8 @@ public class CartService {
         if (null != cartOption) {
             List<ProductCartDetail> products = new ArrayList<>();
 
-            for (ProductQuantity productQuantity : cartOption.getProducts()) {
+            //We go through the products to assemble the structure of the cart detail
+            cartOption.getProducts().forEach(productQuantity -> {
                 Product optionalProduct = productRepository.findBy_id(new ObjectId(productQuantity.getId()));
 
                 if (null != optionalProduct) {
@@ -70,8 +65,9 @@ public class CartService {
 
                     products.add(productCartDetail);
                 }
-            }
+            });
 
+            cartDetail.setId(new ObjectId(cartOption.get_id()));
             cartDetail.setProducts(products);
             cartDetail.setQuantityCart(cartOption.getQuantity());
             cartDetail.setTotalMount(new Decimal128(cartOption.getTotalMount()));
@@ -83,8 +79,43 @@ public class CartService {
     }
 
     public Cart deleteProductById(String idCart, String idProduct) {
-        ObjectId _id = new ObjectId(idCart);
-        ObjectId objectIdProduct = new ObjectId(idProduct);
-        return cartRepository.deleteProductById(_id, objectIdProduct);
+        Cart cartOption = cartRepository.findBy_id(new ObjectId(idCart));
+
+        if (null != cartOption){
+
+            //We filter the product list, to obtain the product to be removed from the cart
+            ProductQuantity productQuantity = cartOption.getProducts()
+                    .stream()
+                    .filter(productQuantity1 -> productQuantity1.getId().equals(idProduct))
+                    .findFirst()
+                    .orElse(null);
+
+            //We remove the product from the cart's product list
+            cartOption.getProducts().remove(productQuantity);
+
+            final BigDecimal[] totalMount = {BigDecimal.valueOf(0)};
+            final Integer[] totalQuantity = {0};
+
+            //We update the total values of purchase value and total products
+            getValuesCart(cartOption.getProducts(), totalMount, totalQuantity);
+            cartOption.setTotalMount(new Decimal128(totalMount[0]));
+            cartOption.setQuantity(totalQuantity[0]);
+
+            //We update the cart
+            return cartRepository.save(cartOption);
+        }
+
+        return new Cart();
+    }
+
+    private void getValuesCart(List<ProductQuantity> products, BigDecimal[] totalMount, Integer[] totalQuantity) {
+        products.forEach(productQuantity -> {
+            Product product = productRepository.findBy_id(new ObjectId(productQuantity.getId()));
+
+            if (null != product) {
+                totalMount[0] = totalMount[0].add(product.getPrice());
+                totalQuantity[0] += productQuantity.getQuantity();
+            }
+        });
     }
 }
