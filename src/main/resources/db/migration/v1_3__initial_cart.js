@@ -5,15 +5,15 @@ db.createCollection("cart");
 db.cart.insert({
 	"products": [
 		{
-            "id" : ObjectId("5c6c9687c461d5784fecd3c2"),
+            "id" :  new ObjectId(),
             "quantity" : NumberInt(1)
         },
         {
-            "id" : ObjectId("5c6c99355e00ce085aa22257"),
+            "id" : new ObjectId(),
             "quantity" : NumberInt(1)
         },
         {
-            "id" : ObjectId("5c6c9b575e00ce085aa22258"),
+            "id" : new ObjectId(),
             "quantity" : NumberInt(1)
         }
 	],
