@@ -2,6 +2,38 @@
 
 It's the CondorLabs Technical Test
 
+## Pre Installation
+To have installed Java 8 in the testing machine here I add the installation links
+
+## Windows
+
+#### * Intalar JDK 8
+Please download the one that does not use demos and samples
+
+https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+#### * Crear variables de entorno
+Please follow the steps
+
+https://www.aprenderaprogramar.com/index.php?option=com_content&view=article&id=389:configurar-java-en-windows-variables-de-entorno-javahome-y-path-cu00610b&catid=68&Itemid=188
+
+
+##Linux/MAC
+
+#### * Intalar JDK 8
+Please download the one that does not use demos and samples
+
+https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+#### * Crear variables de entorno
+Please follow the steps
+
+##### - Mac
+https://hecthormedina.wordpress.com/2013/10/27/como-configurar-la-variable-de-entorno-java_home-en-mac-os-x-y-no-morir-en-el-intento/
+
+##### - Linux
+https://angelsw.wordpress.com/2011/03/29/variable-de-entorno-e-java-en-linux/
+
 ## Installation, Execute Project and Test in Intellij IDEA 
 
 You can use the Intellij IDE that performs the auto import of the dependencies of the project and that facilitates the execution of the project by right clicking the MarketplaceApplication.java class and then running.
