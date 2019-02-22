@@ -7,12 +7,12 @@ To have installed Java 8 in the testing machine here I add the installation link
 
 ## Windows
 
-#### * Intalar JDK 8
+#### * Install JDK 8
 Please download the one that does not use demos and samples
 
 https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 
-#### * Crear variables de entorno
+#### * Create environment variables
 Please follow the steps
 
 https://www.aprenderaprogramar.com/index.php?option=com_content&view=article&id=389:configurar-java-en-windows-variables-de-entorno-javahome-y-path-cu00610b&catid=68&Itemid=188
@@ -20,12 +20,12 @@ https://www.aprenderaprogramar.com/index.php?option=com_content&view=article&id=
 
 ##Linux/MAC
 
-#### * Intalar JDK 8
+#### * Install JDK 8
 Please download the one that does not use demos and samples
 
 https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 
-#### * Crear variables de entorno
+#### * Create environment variables
 Please follow the steps
 
 ##### - Mac
