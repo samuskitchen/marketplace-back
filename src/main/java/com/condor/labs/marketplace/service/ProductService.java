@@ -3,9 +3,6 @@ package com.condor.labs.marketplace.service;
 import com.condor.labs.marketplace.model.Product;
 import com.condor.labs.marketplace.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 

@@ -56,4 +56,14 @@ public class Category {
     public void setActivate(Boolean activate) {
         this.activate = activate;
     }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", idCategory=" + idCategory +
+                ", name='" + name + '\'' +
+                ", activate=" + activate +
+                '}';
+    }
 }

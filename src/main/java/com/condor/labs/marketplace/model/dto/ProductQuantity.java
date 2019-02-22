@@ -30,4 +30,12 @@ public class ProductQuantity {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
+
+    @Override
+    public String toString() {
+        return "ProductQuantity{" +
+                "id=" + id +
+                ", quantity=" + quantity +
+                '}';
+    }
 }

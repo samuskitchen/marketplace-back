@@ -73,4 +73,16 @@ public class ProductCartDetail {
     public void setCurrencyProduct(String currencyProduct) {
         this.currencyProduct = currencyProduct;
     }
+
+    @Override
+    public String toString() {
+        return "ProductCartDetail{" +
+                "id=" + _id +
+                ", nameProduct='" + nameProduct + '\'' +
+                ", imageProduct='" + imageProduct + '\'' +
+                ", priceProduct=" + priceProduct +
+                ", quantityProduct=" + quantityProduct +
+                ", currencyProduct='" + currencyProduct + '\'' +
+                '}';
+    }
 }

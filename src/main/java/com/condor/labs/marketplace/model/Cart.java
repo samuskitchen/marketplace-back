@@ -68,4 +68,15 @@ public class Cart {
     public void setDateCart(LocalDateTime dateCart) {
         this.dateCart = dateCart;
     }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "id=" + _id +
+                ", products=" + products +
+                ", totalMount=" + totalMount +
+                ", quantity=" + quantity +
+                ", dateCart=" + dateCart +
+                '}';
+    }
 }

@@ -4,10 +4,12 @@ import org.bson.types.Decimal128;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 import java.util.Map;
 
+@Document
 public class Product {
 
     @Id
@@ -119,5 +121,21 @@ public class Product {
 
     public void setDetail(Map<String, String> detail) {
         this.detail = detail;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                " id=" + _id +
+                ", category=" + category +
+                ", name='" + name + '\'' +
+                ", currency='" + currency + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", score=" + score +
+                ", description='" + description + '\'' +
+                ", image='" + image + '\'' +
+                ", detail=" + detail +
+                '}';
     }
 }

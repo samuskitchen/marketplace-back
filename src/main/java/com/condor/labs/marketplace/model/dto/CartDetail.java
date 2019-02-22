@@ -54,4 +54,14 @@ public class CartDetail {
     public void setId(ObjectId id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "CartDetail{" +
+                "products=" + products +
+                ", quantityCart=" + quantityCart +
+                ", totalMount=" + totalMount +
+                ", id=" + id +
+                '}';
+    }
 }
